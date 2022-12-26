@@ -23,7 +23,7 @@ public static class ApplicationServiceExtensions
                 policy
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .WithOrigins("http://localhost:3001");
+                    .WithOrigins("http://localhost:3000");
             });
         });
         services.AddMediatR(typeof(List.Handler));
