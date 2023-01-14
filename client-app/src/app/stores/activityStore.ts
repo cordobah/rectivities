@@ -1,4 +1,4 @@
-import {Activity} from "../modules/activity";
+import {Activity} from "../models/activity";
 import {makeAutoObservable, runInAction} from "mobx";
 import agent from "../api/agent";
 import {v4 as uuid} from "uuid";

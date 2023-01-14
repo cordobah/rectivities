@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {Button, Icon, Item, Segment} from "semantic-ui-react";
-import {Activity} from "../../../app/modules/activity";
+import {Activity} from "../../../app/models/activity";
 import {format} from "date-fns";
 
 
