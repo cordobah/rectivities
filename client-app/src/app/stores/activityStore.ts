@@ -3,7 +3,7 @@ import {makeAutoObservable, runInAction} from "mobx";
 import agent from "../api/agent";
 import {format} from "date-fns";
 import {store} from "./store";
-import { Profile } from "../models/profile";
+import {Profile} from "../models/profile";
 
 export default class ActivityStore {
     activityRegistry = new Map<string, Activity>();
@@ -109,7 +109,7 @@ export default class ActivityStore {
         try {
             await agent.Activities.update(activity);
             runInAction(() => {
-                if(activity.id){
+                if (activity.id) {
                     let updatedActivity = {...this.getActivity(activity.id), ...activity}
                     this.activityRegistry.set(activity.id, updatedActivity as Activity);
                     this.selectedActivity = activity as Activity;
@@ -169,7 +169,7 @@ export default class ActivityStore {
                 this.selectedActivity!.isCancelled = !this.selectedActivity?.isCancelled;
                 this.activityRegistry.set(this.selectedActivity!.id, this.selectedActivity!);
             })
-        }catch (error) {
+        } catch (error) {
             console.log(error);
         } finally {
             runInAction(() => this.loading = false);
@@ -179,4 +179,15 @@ export default class ActivityStore {
     clearSelectedActivity = () => {
         this.selectedActivity = undefined;
     }
+
+    updateAttendeeFollowing = (username: string) => {
+        this.activityRegistry.forEach(activity => {
+            activity.attendees?.forEach(attendee => {
+                if(attendee.username === username){
+                    attendee.following ? attendee.followersCount-- : attendee.followersCount++;
+                    attendee.following = !attendee.following;
+                }
+            })
+        })
+}
 }
