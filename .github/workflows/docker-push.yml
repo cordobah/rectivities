@@ -25,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: lcordoba/rectivities:latest
+          tags: lcordoba/reactivities:latest
