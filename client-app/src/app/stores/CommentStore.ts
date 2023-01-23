@@ -12,9 +12,9 @@ export default class CommentStore {
     }
 
     createHubConnection = (activityId: string) => {
-        if(store.activityStore.selectedActivity){
+        if (store.activityStore.selectedActivity) {
             this.hubConnection = new HubConnectionBuilder()
-                .withUrl('https://localhost:7000/chat?activityId=' + activityId,{
+                .withUrl(process.env.REACT_APP_CHAT_URL + '?activityId=' + activityId, {
                     accessTokenFactory: () => store.userStore.user?.token!
                 })
                 .withAutomaticReconnect()
@@ -31,7 +31,7 @@ export default class CommentStore {
                 });
             })
 
-            this.hubConnection.on('ReceiveComment', (comment: ChatComment) =>{
+            this.hubConnection.on('ReceiveComment', (comment: ChatComment) => {
                 runInAction(() => {
                     comment.createdAt = new Date(comment.createdAt);
                     this.comments.unshift(comment)
@@ -48,12 +48,12 @@ export default class CommentStore {
         this.comments = [];
         this.stopHubConnection();
     }
-     addComment = async (values: any) => {
+    addComment = async (values: any) => {
         values.activityId = store.activityStore.selectedActivity?.id;
         try {
             await this.hubConnection?.invoke('SendComment', values);
         } catch (error) {
             console.log(error);
         }
-     }
+    }
 }
