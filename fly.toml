@@ -1,6 +1,6 @@
-# fly.toml file generated for activity-mate on 2023-01-23T09:03:30-05:00
+# fly.toml file generated for activity-dude on 2023-01-23T16:36:28-05:00
 
-app = "activity-mate"
+app = "activity-dude"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -12,7 +12,7 @@ processes = []
   ASPNETCORE_URLS="http://+:8080"
   Cloudinary__CloudName="dvxdbhdni"
   Cloudinary__ApiKey="219959935357251"
-  
+
 [experimental]
   auto_rollback = true
 
