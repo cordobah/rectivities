@@ -1,12 +1,9 @@
-# fly.toml file generated for activity-dude on 2023-01-25T11:38:56-05:00
+# fly.toml file generated for activities-mate on 2023-01-25T15:12:34-05:00
 
-app = "activity-dude"
+app = "activities-mate"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
-
-[build]
-  image = "lcordoba/reactivities:latest"
 
 [env]
   ASPNETCORE_URLS = "http://+:8080"
