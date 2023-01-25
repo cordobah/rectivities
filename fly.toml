@@ -9,9 +9,9 @@ processes = []
   image = "lcordoba/reactivities:latest"
 
 [env]
-  ASPNETCORE_URLS="http://+:8080"
-  Cloudinary__CloudName="dvxdbhdni"
-  Cloudinary__ApiKey="219959935357251"
+  ASPNETCORE_URLS = "http://+:8080"
+  Cloudinary__ApiKey = "219959935357251"
+  Cloudinary__CloudName = "dvxdbhdni"
 
 [experimental]
   auto_rollback = true
