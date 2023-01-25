@@ -6,7 +6,7 @@ kill_timeout = 5
 processes = []
 
 [build]
-  image = "lcordoba/rectivities:latest"
+  image = "lcordoba/reactivities:latest"
 
 [env]
   ASPNETCORE_URLS="http://+:8080"
