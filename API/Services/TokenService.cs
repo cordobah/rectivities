@@ -1,5 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using Domain.Entities;
 using Microsoft.IdentityModel.Tokens;
@@ -28,7 +29,7 @@ public class TokenService
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Expires = DateTime.UtcNow.AddDays(7),
+            Expires = DateTime.UtcNow.AddMinutes(1),
             SigningCredentials = creds,
             Subject = new ClaimsIdentity(claim)
         };
@@ -38,5 +39,13 @@ public class TokenService
         var token = tokenHandler.CreateToken(tokenDescriptor);
 
         return tokenHandler.WriteToken(token);
+    }
+
+    public RefreshToken GenerateRefreshToken()
+    {
+        var randomNumber = new byte[32];
+        using var rng = RandomNumberGenerator.Create();
+        rng.GetBytes(randomNumber);
+        return new RefreshToken { Token = Convert.ToBase64String(randomNumber) };
     }
 }

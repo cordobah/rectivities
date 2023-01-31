@@ -37,11 +37,12 @@ app.UseXfo(opt => opt.Deny());
 app.UseCspReportOnly(opt => opt
     .BlockAllMixedContent()
     .StyleSources(s => s.Self()
-        .CustomSources("https://fonts.googleapis.com","sha256-EMwmUb71CVDuY/njkP7rkmMDWC2FXesrccnpjyUOPUI="))
+        .CustomSources("https://fonts.googleapis.com","sha256-EMwmUb71CVDuY/njkP7rkmMDWC2FXesrccnpjyUOPUI=","sha256-DpOoqibK/BsYhobWHnU38Pyzt5SjDZuR/mFsAiVN7kk="))
     .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com","data:"))
     .FormActions(s => s.Self())
     .FrameAncestors(s => s.Self())
-    .ImageSources(s => s.Self().CustomSources("https://res.cloudinary.com","https://scontent.feoh8-1.fna.fbcdn.net","blob:","data:"))
+    .ImageSources(s => s.Self()
+        .CustomSources("https://res.cloudinary.com","https://scontent.feoh8-1.fna.fbcdn.net","https://scontent-lax3-2.xx.fbcdn.net","blob:","data:"))
     .ScriptSources(s => s.Self().CustomSources("https://connect.facebook.net"))
 );
 
