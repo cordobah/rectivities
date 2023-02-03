@@ -3,11 +3,13 @@ using Application.Core;
 using Application.Interfaces;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Infrastructure.Email;
 using Infrastructure.Photos;
 using Infrastructure.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using SendGrid.Helpers.Mail;
 
 namespace API.Extensions;
 
@@ -73,6 +75,7 @@ public static class ApplicationServiceExtensions
         services.AddHttpContextAccessor();
         services.AddScoped<IUserAccessor, UserAccessor>();
         services.AddScoped<IPhotoAccessor, PhotoAccessor>();
+        services.AddScoped<EmailSender>();
 
         services.Configure<CloudinarySettings>(config.GetSection("Cloudinary"));
         services.AddSignalR();
