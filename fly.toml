@@ -7,7 +7,7 @@ processes = []
 
 [env]
   ASPNETCORE_URLS = "http://+:8080"
-  Cloudinary__ApiKey = "219959935357251"
+  Cloudinary__ApiKey = "179987891564853"
   Cloudinary__CloudName = "dvxdbhdni"
   Facebook__AppId = "731506768417388"
 
